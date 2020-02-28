@@ -1,12 +1,11 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, functions
 from app.forms import LoginForm
-import sqlite3 as sql
 
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'username': 'New friend'}
+    user = {'username': 'Friend'}
     return render_template('index.html', title='Home', user=user)
 
 
@@ -25,9 +24,10 @@ def login():
 
 
 
-@app.route('/enternew')
-def new_student():
-   return render_template('schedule.html')
+@app.route('/schedule')
+def schedule():
+   rows = functions.get_from_db()
+   return render_template('schedule.html', rows = rows)
 
 @app.route('/addrec',methods = ['POST', 'GET'])
 def input_rows():
