@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app, functions
+from app import app
 from app.forms import LoginForm
 
 @app.route('/')
@@ -21,21 +21,3 @@ def login():
 
 
 
-
-
-
-@app.route('/schedule')
-def schedule():
-   rows = functions.get_from_db()
-   return render_template('schedule.html', rows = rows)
-
-@app.route('/addrec',methods = ['POST', 'GET'])
-def input_rows():
-    msg = functions.input_in_db()
-    return render_template("result.html",msg = msg)
-
-
-@app.route('/list')
-def list():
-    rows = functions.get_from_db()
-    return render_template("list.html",rows = rows)
