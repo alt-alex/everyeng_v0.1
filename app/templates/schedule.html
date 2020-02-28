@@ -1,0 +1,19 @@
+<html>
+   <body>
+      <form action = "{{ url_for('input_rows') }}" method = "POST">
+         <h3>Schedule Information</h3>
+         Name<br>
+         <input type = "text" name = "nm" /></br>
+         
+         Address<br>
+         <textarea name = "add" ></textarea><br>
+         
+         Date<br>
+         <input type = "text" name = "date" /><br>
+         
+         Time<br>
+         <input type = "text" name = "time" /><br>
+         <input type = "submit" value = "submit" /><br>
+      </form>
+   </body>
+</html>

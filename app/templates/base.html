@@ -1,0 +1,62 @@
+<html>
+
+  {% if title %}
+  <title>{{ title }} - English for Everyone</title>
+  {% else %}
+  <title>English for Everyone</title>
+  {% endif %}
+
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        body {
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .background {
+          background-image: url("/static/back.jpg");
+          background-color: #EAEDED;
+          height: 700px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: relative;
+        }
+
+
+        .text {
+          color: #2E4053;
+        }
+
+        </style>
+
+            Menu >
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+
+    </head>
+
+
+    <body>
+
+    <div class="background">
+
+    <div class="text">
+
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    </body>
+</html>
+
